@@ -48,10 +48,12 @@ router.post("/search", [urlencodedParser], async (req, res) => {
               const jr = JSON.stringify(result);
               fr = JSON.parse(jr);
             }
-            axios.get("http://localhost:4000/recentSearch").then((response) => {
-              rs = response.data;
-              return res.status(200).json({ fr, rs });
-            });
+            axios
+              .get("https://rscrapperdb.herokuapp.com/recentSearch")
+              .then((response) => {
+                rs = response.data;
+                return res.status(200).json({ fr, rs });
+              });
           }
         );
       } else {
@@ -101,7 +103,7 @@ router.post("/search", [urlencodedParser], async (req, res) => {
                     );
                   }
                   axios
-                    .get("http://localhost:4000/recentSearch")
+                    .get("https://rscrapperdb.herokuapp.com/recentSearch")
                     .then((response) => {
                       rs = response.data;
                       return res.status(200).json({ fr, rs });
