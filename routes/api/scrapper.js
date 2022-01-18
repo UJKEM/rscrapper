@@ -6,7 +6,7 @@ const axios = require("axios");
 const db = require("../../config/db");
 const con = db.connection;
 
-router.get("/", async (req, res) => {
+router.get("/home", async (req, res) => {
   return con.query("SELECT * FROM jobs", (err, result) => {
     if (err) throw err;
     if (result && result.length > 0) {
@@ -47,7 +47,7 @@ router.post("/search", [urlencodedParser], async (req, res) => {
             if (result.length > 0) {
               const jr = JSON.stringify(result);
               fr = JSON.parse(jr);
-            } 
+            }
             axios.get("http://localhost:4000/recentSearch").then((response) => {
               rs = response.data;
               return res.status(200).json({ fr, rs });
