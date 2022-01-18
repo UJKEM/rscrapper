@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 
 const config = {
-  host: "sql6.freesqldatabase.com",
-  user: "sql6465208",
-  password: "Xqfn4Mpdlh",
-  database: "sql6465208",
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
   port: 3306,
 };
 
