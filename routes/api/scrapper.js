@@ -7,9 +7,9 @@ const db = require("../../config/db");
 const con = db.connection;
 
 router.get("/home", async (req, res) => {
-  return con.query("SELECT * FROM jobs", (err, result) => {
+  con.query("SELECT * FROM jobs", (err, result) => {
     if (err) throw err;
-    if (result && result.length > 0) {
+    if (result.length > 0) {
       const jr = JSON.stringify(result);
       const fr = JSON.parse(jr);
       return res.status(200).json({ fr });
@@ -19,9 +19,9 @@ router.get("/home", async (req, res) => {
 });
 
 router.get("/recentSearch", async (req, res) => {
-  return con.query("SELECT * FROM jtitle;", (err, result) => {
+  con.query("SELECT * FROM jtitle;", (err, result) => {
     if (err) throw err;
-    if (result && result.length > 0) {
+    if (result.length > 0) {
       const jr = JSON.stringify(result);
       const rs = JSON.parse(jr);
       return res.status(200).json({ rs });
