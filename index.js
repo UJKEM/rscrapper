@@ -12,7 +12,11 @@ app.use(
   })
 );
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://rscrapperdb.herokuapp.com",
+  })
+);
 
 db.connection.connect(function (err) {
   if (err) {
